@@ -1,23 +1,18 @@
-import React, { Component } from 'react';
-import { getSentence } from './modules/bullShit'
+import React, { useState } from "react";
+import { getSentence } from "./modules/bullShit";
 
-class App extends Component {
-  state = {
-    randomBS: getSentence()
-  }
+const App = () => {
+  const [randomBs, setRandomBs] = useState(getSentence());
+  const getNewBs = () => {
+    setRandomBs(getSentence());
+  };
 
-  getNewBS = () => {
-    this.setState({randomBS: getSentence()})
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>{this.state.randomBS}</h1>
-        <button onClick={this.getNewBS}>Tell me more...</button>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1>{randomBs}</h1>
+      <button onClick={getNewBs}>Tell me more...</button>
+    </div>
+  );
+};
 
 export default App;
